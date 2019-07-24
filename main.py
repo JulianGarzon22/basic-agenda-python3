@@ -42,24 +42,61 @@ def create():
 
 
 def remove(taskName):
-    print("remove")
+    formatName = taskName.lower()
+    f = open("tasks.txt", "r")
+    allTaskFile = f.read()
+    f.close()
 
+    primitiveTaskList = allTaskFile.split("\n")
+
+    taskList = []
+    for x in primitiveTaskList:
+        taskList.append(json.loads(x))
+
+    for i in range(len(taskList)):
+        if taskList[i]["name"].lower() == formatName:
+            del taskList[i]
+            break
+
+    f = open("tasks.txt", "w")
+    f.write("")
+    f.close()
+
+    f = open("tasks.txt", "a")
+    for index, x in enumerate(taskList):
+        if index < len(taskList) - 1:
+            y = json.dumps(x)
+            f.write(y + "\n")
+        else:
+            y = json.dumps(x)
+            f.write(y)
+    f.close()
+    
+    
 def complete(taskName):
     print("complete")
 
 if __name__ == "__main__":
     print("WELCOME AGAIN")
-    action = input("What do you wanna do?: ")
+    action = ""
 
-    if action == "list":
-        tasks()
-    elif action == "create":
-        create()
-    elif action == "remove":
-        taskName = input("Enter the task name: ")
-        remove(taskName)
-    elif action == "complete":
-        taskName = input("Enter the task name: ")
-        complete(taskName)
-    else: 
-        print("enter a valid instruction")
+    while action != "exit":
+        action = input("What do you wanna do?: ")
+        if action == "list":
+            tasks()
+        elif action == "create":
+            create()
+        elif action == "remove":
+            taskName = input("Enter the task name: ")
+            remove(taskName)
+        elif action == "complete":
+            taskName = input("Enter the task name: ")
+            complete(taskName)
+        elif action == "help":
+            print("You can ask for 'list', 'create', 'remove, 'complete' or 'exit'")
+        elif action == "exit":
+            print("Vuelve pronto")
+            break
+        else: 
+            print("Please enter a valid instruction")
+        action = ""

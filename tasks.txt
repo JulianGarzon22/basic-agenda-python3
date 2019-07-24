@@ -1,0 +1,4 @@
+{"name": "Aprender Python", "desc": "Para hacer backend perrón", "creation": "23/07/2019", "goal": "24/08/2019"}
+{"name": "Aprender JavaScript", "desc": "Para hacer frontend perrón", "creation": "23/07/2019", "goal": "24/08/2019"}
+{"name": "Aprender Elixir", "desc": "Para hacer cosas funcionales chimbas", "creation": "23/07/2019", "goal": "24/08/2019"}
+{"name": "Hola", "desc": "una descripcion cualquiera", "creation": "23/7/2019", "goal": "14/02/2001"}
